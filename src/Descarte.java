@@ -1,23 +1,73 @@
 public class Descarte {
 
+    private Carta[] cartas;
+    private int ultima;
+    private Console console;
+
+    public Descarte() {
+        cartas = new Carta[52];
+        ultima = 0;
+        console = new Console();
+    }
+
     public void mostrar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+        if (!this.estaVacio()) {
+            Carta cartaCima = cartas[ultima - 1];
+            console.write("Descarte:");
+            cartaCima.mostrar();
+        } else {
+            console.writeln("El descarte= " + "[]");
+        }
+    }
+
+    private boolean estaVacio() {
+        return ultima == 0;
+    }
+
+    private Carta sacar() {
+        Carta carta = cartas[ultima - 1];
+        ultima = ultima - 1;
+        return carta;
     }
 
     public void moverA(Palo paloDestino) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverA'");
+        if (this.estaVacio()) {
+            console.write("El descarte esta vacio");
+        } else {
+            paloDestino.añadir(this.sacar());
+        }
+
     }
 
     public void moverA(Columna columnaDestino) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverA'");
+
+        if (this.estaVacio()) {
+            console.write("El descarte esta vacio");
+        } else {
+            Carta cartaCima = this.sacar();
+
+            if (columnaDestino.esValidaCarta(cartaCima)) {
+                columnaDestino.añadir(cartaCima);
+            } else {
+                console.writeln("Esa carta no es apilable en esa columna");
+                this.añadir(cartaCima);
+            }
+
+        }
     }
 
     public void voltear(Baraja baraja) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'voltear'");
+
+        while (!this.estaVacio()) {
+            Carta carta = this.sacar();
+            carta.darVuelta();
+            baraja.poner(carta);
+        }
+    }
+
+    public void añadir(Carta carta) {
+        cartas[ultima] = carta;
+        ultima++;
     }
 
 }
