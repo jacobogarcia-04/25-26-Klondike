@@ -15,4 +15,9 @@ public class Palo {
         throw new UnsupportedOperationException("Unimplemented method 'completo'");
     }
 
+    public void añadir(Carta cartaCima) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'añadir'");
+    }
+
 }
