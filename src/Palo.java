@@ -20,4 +20,9 @@ public class Palo {
         throw new UnsupportedOperationException("Unimplemented method 'añadir'");
     }
 
+    public boolean esApilable(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'esApilable'");
+    }
+
 }

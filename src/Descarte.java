@@ -34,7 +34,13 @@ public class Descarte {
         if (this.estaVacio()) {
             console.write("El descarte esta vacio");
         } else {
-            paloDestino.añadir(this.sacar());
+            Carta carta = this.sacar();
+            if (paloDestino.esApilable(carta)) {
+                paloDestino.añadir(carta);
+            } else {
+                console.writeln("No se puede añadir a ese palo");
+                this.añadir(carta);
+            }
         }
 
     }
@@ -44,13 +50,13 @@ public class Descarte {
         if (this.estaVacio()) {
             console.write("El descarte esta vacio");
         } else {
-            Carta cartaCima = this.sacar();
+            Carta carta = this.sacar();
 
-            if (columnaDestino.esValidaCarta(cartaCima)) {
-                columnaDestino.añadir(cartaCima);
+            if (columnaDestino.esValidaCarta(carta)) {
+                columnaDestino.añadir(carta);
             } else {
                 console.writeln("Esa carta no es apilable en esa columna");
-                this.añadir(cartaCima);
+                this.añadir(carta);
             }
 
         }
