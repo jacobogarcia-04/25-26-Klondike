@@ -5,6 +5,8 @@ class Klondike {
     private Columna[] columnas;
     private Descarte descarte;
     private Console console;
+    private String[] nombresPalos = {"Picas", "Diamantes", "Tréboles", "Corazones"};
+ 
 
     private final int NUMERO_COLUMNAS = 7;
     private final int NUMERO_PALOS = 4;
@@ -13,7 +15,7 @@ class Klondike {
         baraja = new Baraja();
         palos = new Palo[NUMERO_PALOS];
         for (int i = 0; i < NUMERO_PALOS; i++) {
-            palos[i] = new Palo();
+            palos[i] = new Palo(nombresPalos[i]);
         }
         columnas = new Columna[NUMERO_COLUMNAS];
         for (int i = 0; i < NUMERO_COLUMNAS; i++) {
