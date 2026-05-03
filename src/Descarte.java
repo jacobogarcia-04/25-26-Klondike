@@ -52,7 +52,7 @@ public class Descarte {
         } else {
             Carta carta = this.sacar();
 
-            if (columnaDestino.esValidaCarta(carta)) {
+            if (columnaDestino.esApilable(carta)) {
                 columnaDestino.añadir(carta);
             } else {
                 console.writeln("Esa carta no es apilable en esa columna");
